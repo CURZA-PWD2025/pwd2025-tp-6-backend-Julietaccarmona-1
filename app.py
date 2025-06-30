@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.exceptions import HTTPException
 from config import Config
 
 db = SQLAlchemy()  # <-- se define global, sin app
@@ -22,5 +23,15 @@ def create_app():
 
     from routes.articulo_routes import articulo_bp
     app.register_blueprint(articulo_bp, url_prefix='/articulos')
+
+    # Manejador global para errores HTTP, incluido el 409
+    @app.errorhandler(HTTPException)
+    def handle_http_exception(error):
+        response = jsonify({
+            "error": error.description,
+            "code": error.code
+        })
+        response.status_code = error.code
+        return response
 
     return app

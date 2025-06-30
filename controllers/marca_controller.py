@@ -1,3 +1,4 @@
+from flask import abort
 from models.marca_model import MarcaModel
 
 class MarcaController:
@@ -11,6 +12,11 @@ class MarcaController:
 
     @staticmethod
     def create(data: dict):
+        descripcion = data.get("descripcion")
+        existing = MarcaModel.query.filter_by(descripcion=descripcion).first()
+        if existing:
+            abort(409, description=f"La marca '{descripcion}' ya existe.")
+        
         nueva = MarcaModel.deserializar(data)
         nueva.create(data)
         return nueva.serializar()
