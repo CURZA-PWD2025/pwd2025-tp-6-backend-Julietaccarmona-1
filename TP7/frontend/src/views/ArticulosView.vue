@@ -1,7 +1,5 @@
 <template>
-  <h4>Modulo Marcas</h4>
-
-  <!-- renderizado del modulo Marcas, lista, create, update, mostrar una en particular-->
+  <h4>Marcas</h4>
   <RouterView />
 </template>
 
@@ -12,7 +10,6 @@ import { onMounted } from 'vue'
 const route = useRouter()
 
 onMounted(() => {
-  //console.log('componente montado')
   route.push({ name: 'marcas_list' })
 })
 </script>
