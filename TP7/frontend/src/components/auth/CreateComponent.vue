@@ -67,7 +67,7 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped>
+<style> 
 .container {
   background: linear-gradient(#232323, #2c2c2c);
   width: 400px;
@@ -116,9 +116,10 @@ option:checked {
 button {
   width: 50%;
   margin: 0 auto;
-  height: 40px;Add commentMore actions
+  height: 40px;
   background-color: green;
   border: none;
   color: greenyellow;
   border-radius: 10px;
 }
+</style>
