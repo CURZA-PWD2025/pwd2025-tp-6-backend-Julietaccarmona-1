@@ -30,7 +30,7 @@
 <script setup lang="ts">
 import useAuthStore from '@/stores/auth'
 
-import useRolesStore from '@/stores/marcas copy'
+import useRolesStore from '@/stores/marcas_copy'
 import { toRefs, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const { Roles } = toRefs(useRolesStore())
